@@ -97,6 +97,10 @@ namespace LinesPuller
             {
                 File.Delete(TranslationHelper.TransfileUILabelUN);
             }
+            if(File.Exists(Path.Combine(BepInEx.Paths.PluginPath, "KVs.xlsx")))
+            {
+                File.Delete(Path.Combine(BepInEx.Paths.PluginPath, "KVs.xlsx"));
+            }
 
 
         }

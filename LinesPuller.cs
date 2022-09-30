@@ -233,11 +233,11 @@ namespace EngTranslatorMod
             translationDict = new Dictionary<string, string>(translationDict, comparer);
             Debug.Log("1 = " + Application.persistentDataPath); 
             Debug.Log("2 = " + Application.dataPath);
-            //FungusDump.CleanFiles();
-            //FungusDump.GenerateTADumps();
-            //FungusDump.ProcessFungusDumps();
-            //FungusDump.WriteFungusDump();
-            //TranslationHelper.TranslationDeepl();
+            FungusDump.CleanFiles();
+            FungusDump.GenerateTADumps();
+            FungusDump.ProcessFungusDumps();
+            FungusDump.WriteFungusDump();
+            TranslationHelper.TranslationDeepl();
             ExcelHelper.ConvertToExcel();
 
         }
