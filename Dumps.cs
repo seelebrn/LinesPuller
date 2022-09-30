@@ -80,6 +80,10 @@ namespace LinesPuller
             {
                 File.Delete(fileUILabelUN);
             }
+            if (File.Exists(filenewUILabelKV))
+            {
+                File.Delete(filenewUILabelKV);
+            }
             if (File.Exists(TranslationHelper.TransfileMenuUN))
             {
                 File.Delete(TranslationHelper.TransfileMenuUN);

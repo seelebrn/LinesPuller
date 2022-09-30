@@ -27,6 +27,7 @@ using UltimateSurvival.Debugging;
 using UltimateSurvival;
 using BehaviorDesigner.Runtime.Tasks;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace LinesPuller
 {
@@ -234,14 +235,27 @@ namespace LinesPuller
 
             translationDict = new Dictionary<string, string>(translationDict, comparer);
             Debug.Log(Application.dataPath);
+
+
             FungusDump.CleanFiles();
+            System.Media.SystemSounds.Beep.Play();
+            System.Threading.Thread.Sleep(1000);
+            System.Media.SystemSounds.Asterisk.Play();
+            System.Threading.Thread.Sleep(1000);
+            System.Media.SystemSounds.Exclamation.Play();
+
             FungusDump.ProcessFungusDumps();
             FungusDump.WriteFungusDump();
             FungusDump.GenerateTADumps();
             TranslationHelper.TranslationDeepl();
-            ExcelHelper.ConvertToExcel();
+            System.Media.SystemSounds.Beep.Play();
+            System.Threading.Thread.Sleep(1000);
+            System.Media.SystemSounds.Asterisk.Play();
+            System.Threading.Thread.Sleep(1000);
+            System.Media.SystemSounds.Exclamation.Play();
 
         }
+
 
 
 
@@ -261,9 +275,12 @@ namespace LinesPuller
 
     private void Update()
     {
+            if (Input.GetKeyUp(KeyCode.F1) == true)
+            {
+                ExcelHelper.ConvertToExcel();
+            }
 
-
-    }
+        }
 }
 
 public static class DictionaryExtensions
