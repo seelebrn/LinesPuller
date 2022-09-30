@@ -14,13 +14,12 @@ using GUIPackage;
 using UnityEngine.Events;
 using YSGame.TuJian;
 using System.Globalization;
-using EngTranslatorMod;
 using System.Linq.Expressions;
 using AssetsTools.NET.Extra;
 
 namespace LinesPuller
 {
-    static class FungusDump
+    class FungusDump
     {
 
         public static List<string> SayUN = new List<string>();
@@ -79,7 +78,7 @@ namespace LinesPuller
             }
             if (File.Exists(fileUILabelUN))
             {
-                File.Delete(filenewUILabelKV);
+                File.Delete(fileUILabelUN);
             }
             if (File.Exists(TranslationHelper.TransfileMenuUN))
             {
@@ -107,7 +106,9 @@ namespace LinesPuller
             public static void ProcessFungusDumps()
         {
             var am = new AssetsManager();
-            string[] files = Directory.GetFiles(Main.parentDir);
+            Debug.Log("ADP : " + Application.dataPath);
+            string[] files = Directory.GetFiles(Application.dataPath);
+
             foreach (var file in files)
             {
                 if (!file.Contains(".resS"))
@@ -339,12 +340,6 @@ namespace LinesPuller
                         foreach(var match in matchCollection)
                         {
                             var str = Regex.Unescape(match.ToString()).Replace("\"", "").Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t").Replace("\\获", "\\\\u83b7");
-                            if (Regex.Unescape(match.ToString().Replace("\"", "")).StartsWith("战斗开始时，若神识高于对手"))
-                            {
-                                Debug.Log("WARNING : " + str);
-                                Debug.Log("WARNING : " + match.ToString());
-
-                            }
                             if (Helpers.IsChinese(str))
                             {
                                 if (!Main.TextAssetDict.ContainsKey(str) && !str.StartsWith("local") && !str.StartsWith("return") && !Regex.IsMatch(str, ExcludePattern1) && !Regex.IsMatch(str, ExcludePattern2) && !Regex.IsMatch(str, ExcludePattern3) && !Regex.IsMatch(str, ExcludePattern4) && !Regex.IsMatch(str, ExcludePattern5) && !Regex.IsMatch(str, ExcludePattern6) && !Regex.IsMatch(str, ExcludePattern7) && !Regex.IsMatch(str, ExcludePattern8) && !Regex.IsMatch(str, ExcludePattern9) && !Regex.IsMatch(str, ExcludePattern10)) 

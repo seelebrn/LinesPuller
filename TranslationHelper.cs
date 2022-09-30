@@ -88,7 +88,6 @@ namespace LinesPuller
                 }
             }*/
 
-
         }
 
 

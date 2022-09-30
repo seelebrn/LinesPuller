@@ -25,8 +25,10 @@ using AssetsTools.NET.Extra;
 using AssetsTools.NET;
 using UltimateSurvival.Debugging;
 using UltimateSurvival;
+using BehaviorDesigner.Runtime.Tasks;
+using System.Threading.Tasks;
 
-namespace EngTranslatorMod
+namespace LinesPuller
 {
     public class StripedWhiteSpaceCompare : IEqualityComparer<string>
     {
@@ -93,7 +95,7 @@ namespace EngTranslatorMod
         public static Dictionary<string, string> etcDict;
         public static List<string> TAnew = new List<string>();
         public static List<string> newTAKV = new List<string>();
-
+        public static int flag = 0;
 
 
 
@@ -211,7 +213,7 @@ namespace EngTranslatorMod
         }
 
         //Average time : 15-17 min
-        public void Awake()
+        public void Start()
         {
 
             Debug.Log("LinesPuller is active !");
@@ -231,17 +233,16 @@ namespace EngTranslatorMod
             translationDict = new Dictionary<string, string>().MergeLeft(TextAssetDict, UILabelsDict);
 
             translationDict = new Dictionary<string, string>(translationDict, comparer);
-            Debug.Log("1 = " + Application.persistentDataPath); 
-            Debug.Log("2 = " + Application.dataPath);
+            Debug.Log(Application.dataPath);
             FungusDump.CleanFiles();
-            FungusDump.GenerateTADumps();
             FungusDump.ProcessFungusDumps();
             FungusDump.WriteFungusDump();
+            FungusDump.GenerateTADumps();
             TranslationHelper.TranslationDeepl();
             ExcelHelper.ConvertToExcel();
 
         }
-    
+
 
 
     public static void PrintDict(Dictionary<string, string> dictionary)

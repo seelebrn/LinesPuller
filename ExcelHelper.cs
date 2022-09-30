@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EngTranslatorMod;
 using HarmonyLib;
 using MiniExcelLibs;
 using MiniExcelLibs.Attributes;
