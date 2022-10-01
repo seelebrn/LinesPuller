@@ -237,22 +237,8 @@ namespace LinesPuller
             Debug.Log(Application.dataPath);
 
 
-            FungusDump.CleanFiles();
-            System.Media.SystemSounds.Beep.Play();
-            System.Threading.Thread.Sleep(1000);
-            System.Media.SystemSounds.Asterisk.Play();
-            System.Threading.Thread.Sleep(1000);
-            System.Media.SystemSounds.Exclamation.Play();
+            
 
-            FungusDump.ProcessFungusDumps();
-            FungusDump.WriteFungusDump();
-            FungusDump.GenerateTADumps();
-            TranslationHelper.TranslationDeepl();
-            System.Media.SystemSounds.Beep.Play();
-            System.Threading.Thread.Sleep(1000);
-            System.Media.SystemSounds.Asterisk.Play();
-            System.Threading.Thread.Sleep(1000);
-            System.Media.SystemSounds.Exclamation.Play();
 
         }
 
@@ -275,9 +261,72 @@ namespace LinesPuller
 
     private void Update()
     {
-            if (Input.GetKeyUp(KeyCode.F1) == true)
+
+            if(Input.GetKeyUp(KeyCode.F1) == true)
+            {
+                FungusDump.CleanFiles();
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Asterisk.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Exclamation.Play();
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Asterisk.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Exclamation.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Question.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+
+                FungusDump.ProcessFungusDumps();
+                FungusDump.WriteFungusDump();
+                FungusDump.GenerateTADumps();
+                TranslationHelper.TranslationDeepl();
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Asterisk.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Exclamation.Play();
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Asterisk.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Exclamation.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Question.Play();
+                System.Threading.Thread.Sleep(1500);
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+                System.Media.SystemSounds.Beep.Play();
+                System.Threading.Thread.Sleep(1000);
+            }
+            if (Input.GetKeyUp(KeyCode.F2) == true)
             {
                 ExcelHelper.ConvertToExcel();
+            }
+            if (Input.GetKeyUp(KeyCode.F3) == true)
+            {
+                DirectoryInfo dir = new DirectoryInfo(Path.Combine(BepInEx.Paths.PluginPath, "DownloadedFromSpreadSheet"));
+                var files = dir.GetFiles();
+                foreach (var file in files)
+                {
+                    file.Delete();
+                }
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=MenuKV", "FungusMenu.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=MenuUN", "FungusMenu.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=UILabelKV", "UILabel.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=UILabelKV", "UILabel.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=UITextKV", "UIText.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=UITextUN", "UIText.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=TAKV", "TextAsset.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=TAUN", "TextAsset.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=SayKV", "FungusSay.txt");
+                DownloadSheet.Main(@"https://docs.google.com/spreadsheets/d/1bFIfiMtdPmuriAFZT2MiDod3mvm_GjLN/gviz/tq?tqx=out:csv&sheet=SayUN", "FungusSay.txt");
             }
 
         }
