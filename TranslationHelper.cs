@@ -19,7 +19,7 @@ namespace LinesPuller
         public static string TransfileUILabelUN = Path.Combine(BepInEx.Paths.PluginPath, "TransUILabelUN.txt");
         public static async void TranslationDeepl()
         {
-            var authKey = "490d69bc-717f-bf91-9f43-08201c927564:fx"; // Replace with your key
+            var authKey = "KEY";
             var translator = new Translator(authKey);
             //Menu
             /*IEnumerable<string> MenuUNlines = File.ReadLines(FungusDump.fileMenuUN);
