@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -47,7 +47,27 @@ namespace LinesPuller
             {
                 File.Delete(path);
             }
-           
+            //Failsafe in case TransfileSayUN file doesn't exist
+            if(!File.Exists(TranslationHelper.TransfileSayUN))
+            {
+                File.Create(TranslationHelper.TransfileUITextUN);
+                using (StreamWriter tw = new StreamWriter(TranslationHelper.TransfileUITextUN, append: true))
+                {
+                    tw.Write("Hello¤World" + Environment.NewLine);
+                    tw.Close();
+                }
+
+            }
+            //Failsafe in case fileUILabelUN file doesn't exist... the others should exist. There's always even one untranslated line... I think.
+            if (!File.Exists(FungusDump.fileUILabelUN))
+            {
+                File.Create(FungusDump.fileUILabelUN);
+                using (StreamWriter tw = new StreamWriter(TranslationHelper.TransfileUITextUN, append: true))
+                {
+                    tw.Write("Hello" + Environment.NewLine);
+                    tw.Close();                        
+                }
+            }
             var MenuUNlines = ToArrayPlus(File.ReadAllLines(FungusDump.fileMenuUN).ToList());
             Debug.Log(MenuUNlines);
             var SayUNLines = ToArrayPlus(Main.FileToDictionary(TranslationHelper.TransfileSayUN));
